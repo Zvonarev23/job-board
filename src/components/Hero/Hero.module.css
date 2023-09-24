@@ -1,0 +1,77 @@
+.wrapper {
+  position: relative;
+  padding-bottom: 233px;
+}
+
+.wrapper:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 269px;
+  height: 200px;
+  background: url("../../images/laptop.png") no-repeat center/contain;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.blue_title {
+  display: block;
+  color: #2a18ff;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    padding: 40px 0;
+  }
+
+  .wrapper:after {
+    top: 0;
+    right: -40px;
+    transform: translateX(0);
+  }
+
+  .title {
+    font-size: 52px;
+    text-align: start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    padding: 53px 0;
+  }
+
+  .wrapper:after {
+    width: 340px;
+    height: 263px;
+  }
+
+  .title {
+    font-size: 64px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .wrapper {
+    padding: 57px 0;
+  }
+
+  .wrapper:after {
+    width: 421px;
+    height: 330px;
+  }
+
+  .title {
+    max-width: 780px;
+    font-size: 90px;
+    letter-spacing: 1.8px;
+  }
+}

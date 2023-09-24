@@ -1,0 +1,48 @@
+.wrapper {
+  padding-top: 30px;
+}
+
+.vacancies {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.button {
+  margin-bottom: 25px;
+  position: relative;
+  background-color: transparent;
+  color: #2a18ff;
+}
+
+.button:after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: -15px;
+  display: inline-block;
+  border: 4px solid transparent;
+  border-top: 5px solid #2a18ff;
+}
+
+@media (min-width: 768px) {
+  .vacancies {
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vacancies {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .wrapper {
+    padding-top: 80px;
+  }
+
+  .button,
+  button:after {
+    display: none;
+  }
+}

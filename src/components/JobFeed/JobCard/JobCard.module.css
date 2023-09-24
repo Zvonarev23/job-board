@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 219px;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 16px;
+}
+
+.name {
+  font-size: 20px;
+}
+
+.title {
+  padding: 3px 5px;
+  border-radius: 4px;
+  background: #eaecff;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.item {
+  color: #ccc;
+}

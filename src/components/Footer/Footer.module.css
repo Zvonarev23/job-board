@@ -1,0 +1,47 @@
+.footer {
+  padding: 50px 0 40px;
+}
+
+.wrapper {
+  display: grid;
+  gap: 27px;
+  grid-template-areas: 
+  "logo"
+  "copyright"
+  "contacts";
+}
+
+.logo {
+  grid-area: logo;
+}
+
+.copyright {
+  grid-area: copyright;
+}
+
+.contacts {
+  grid-area: contacts;
+}
+
+.contact:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
+.link:hover {
+  color: brown;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    grid-template-areas: 
+    "logo ."
+    "copyright contacts"; 
+  }
+
+  .contacts {
+    justify-self: end;
+  }
+}
+
+
+
