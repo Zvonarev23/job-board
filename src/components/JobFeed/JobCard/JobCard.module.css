@@ -1,6 +1,7 @@
 .card {
   display: flex;
   flex-direction: column;
+  align-items: start;
   gap: 12px;
   min-height: 219px;
   padding: 16px;
@@ -20,6 +21,11 @@
   font-weight: 400;
 }
 
-.item {
+.logo {
+  max-height: 44px;
+  display: block;
+}
+
+.list {
   color: #ccc;
 }

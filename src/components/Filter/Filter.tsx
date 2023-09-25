@@ -1,10 +1,22 @@
 import styles from "./Filter.module.css";
 
+import { useEffect } from "react";
+import { useAppDispatch } from "../../hooks/useDispatch";
+import { useAppSelector } from "../../hooks/useSelector";
+import { fetchCountries } from "../../store/countriesSlice/countriesSlice";
+
 type FilterType = {
   isOpenFilter: boolean;
 };
 
 export const Filter = ({ isOpenFilter }: FilterType) => {
+  const dispatch = useAppDispatch();
+  const countries = useAppSelector((state) => state.countries.countries);
+
+  useEffect(() => {
+    dispatch(fetchCountries());
+  }, []);
+
   return (
     <section
       className={isOpenFilter ? styles.wrapper : styles.wrapper__mobile_hide}
@@ -20,10 +32,13 @@ export const Filter = ({ isOpenFilter }: FilterType) => {
               <option className={styles.option} value="">
                 Выбрать город
               </option>
-              <option className={styles.option}>Москва</option>
-              <option className={styles.option}>Екатеринбург</option>
-              <option className={styles.option}>Казань</option>
-              <option className={styles.option}>Тюмень</option>
+              {countries.map((country, i) => {
+                return (
+                  <option key={i} className={styles.option} value={country}>
+                    {country}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </fieldset>

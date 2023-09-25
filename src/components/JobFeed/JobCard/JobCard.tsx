@@ -1,22 +1,32 @@
+import { API_URL } from "../../../utils/constants";
+import { TVacancy } from "../../../utils/types";
 import styles from "./JobCard.module.css";
 
-export const JobCard = () => {
+type JobCardProps = Omit<TVacancy, "id">;
+
+export const JobCard = (props: JobCardProps) => {
+  const { title, company, salary, type, format, experience, logo } = props;
+
   return (
     <article className={styles.card}>
-      <img className={styles.logo} src="#" alt="Логотип компании" />
+      <img
+        className={styles.logo}
+        src={`${API_URL}${logo}`}
+        alt={`Логотип компании ${company}`}
+      />
 
-      <p className={styles.name}>ВкусВилл</p>
+      <p className={styles.name}>{company}</p>
 
-      <h3 className={styles.title}>Повар-кондитер</h3>
+      <h3 className={styles.title}>{title}</h3>
 
-      <ul>
-        <li className={styles.item}>от 50 000₽</li>
+      <ul className={styles.list}>
+        <li>от {parseInt(salary).toLocaleString()}₽</li>
 
-        <li className={styles.item}>частичная занятость</li>
+        <li>{type}</li>
 
-        <li className={styles.item}>офис</li>
+        <li>{format}</li>
 
-        <li className={styles.item}>опыт не важен</li>
+        <li>{experience}</li>
       </ul>
     </article>
   );
