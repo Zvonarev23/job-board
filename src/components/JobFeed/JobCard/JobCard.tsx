@@ -2,13 +2,19 @@ import { API_URL } from "../../../utils/constants";
 import { TVacancy } from "../../../utils/types";
 import styles from "./JobCard.module.css";
 
-type JobCardProps = Omit<TVacancy, "id">;
+type JobCardProps = {
+  info: TVacancy;
+  addCurrentVacancyDetails: (info: TVacancy) => void;
+};
 
-export const JobCard = (props: JobCardProps) => {
-  const { title, company, salary, type, format, experience, logo } = props;
+export const JobCard = ({ info, addCurrentVacancyDetails }: JobCardProps) => {
+  const { title, company, salary, type, format, experience, logo } = info;
 
   return (
-    <article className={styles.card}>
+    <article
+      onClick={() => addCurrentVacancyDetails(info)}
+      className={styles.card}
+    >
       <img
         className={styles.logo}
         src={`${API_URL}${logo}`}
