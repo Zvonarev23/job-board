@@ -1,0 +1,21 @@
+.wrapper {
+  flex-basis: 100%;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+
+.visually_hidden {
+  position: fixed;
+  transform: scale(0);
+}
+
+@media (min-width: 768px) {
+  .list {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+}
