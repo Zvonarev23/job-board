@@ -1,9 +1,11 @@
 import styles from "./Filter.module.css";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useAppDispatch } from "../../hooks/useDispatch";
 import { useAppSelector } from "../../hooks/useSelector";
 import { fetchCountries } from "../../store/countriesSlice/countriesSlice";
+import { API_URL, VACANCY_URL } from "../../utils/constants";
+import { fetchFilteredVacancies } from "../../store/vacanciesSlice/vacanciesSlice";
 
 type FilterType = {
   isOpenFilter: boolean;
@@ -12,6 +14,23 @@ type FilterType = {
 export const Filter = ({ isOpenFilter }: FilterType) => {
   const dispatch = useAppDispatch();
   const countries = useAppSelector((state) => state.countries.countries);
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (formRef.current) {
+      const formData = new FormData(formRef.current);
+      const urlWithParams = new URL(`${API_URL}${VACANCY_URL}`);
+
+      formData.forEach((value, key) => {
+        urlWithParams.searchParams.append(key, value as string);
+      });
+
+      dispatch(fetchFilteredVacancies(urlWithParams.href));
+    }
+    return;
+  };
 
   useEffect(() => {
     dispatch(fetchCountries());
@@ -23,7 +42,7 @@ export const Filter = ({ isOpenFilter }: FilterType) => {
     >
       <h2 className={styles.title}>Фильтр</h2>
 
-      <form className={styles.form}>
+      <form onSubmit={handleSubmit} ref={formRef} className={styles.form}>
         <fieldset className={styles.fieldset}>
           <legend className={styles.legend}>Город</legend>
 
